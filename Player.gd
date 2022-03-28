@@ -49,12 +49,9 @@ func movement(delta):
 			gravity = gravity + gravity_limit/18
 
 	if Input.is_action_pressed("Down"):
-		gravity = gravity_limit + 0.2
-		$"Down boost".start()
+		print ("Spinjitzu")
 
 
-func _on_Down_boost_timeout():
-	gravity = gravity_limit
 
 func _on_Respawn_body_entered(body):
 	if body.name == "Player":
