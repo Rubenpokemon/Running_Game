@@ -4,7 +4,7 @@ var jump_force = 0.5
 var speed = 0.5
 var velocity = Vector3.ZERO #(0.0.0)
 
-
+var attacking = "No"
 
 var gravity_limit = 0.2
 var gravity = 0.1
@@ -28,8 +28,10 @@ func _input(event):
 
 	if event.is_action_pressed("Jump") and $Feet.get_overlapping_bodies().size() != 0:
 		gravity = gravity - jump_force
-
-
+		if not $Ninjago.is_visible_in_tree():
+			$Tornado.hide()
+			$Ninjago.show()
+			attacking = "No"
 
 func check_L_R():
 	if Input.is_action_pressed("Left"):
@@ -49,9 +51,12 @@ func movement(delta):
 			gravity = gravity + gravity_limit/18
 
 	if Input.is_action_pressed("Down"):
-		print ("Spinjitzu")
+		$Ninjago.hide()
+		$Tornado.show()
+		attacking = "Yes"
 
-
+	if attacking == "Yes":
+		$Tornado.rotation_degrees.y += 10
 
 func _on_Respawn_body_entered(body):
 	if body.name == "Player":

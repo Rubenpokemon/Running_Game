@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Tiles/All_Tiles.tres" type="MeshLibrary" id=2]
 [ext_resource path="res://Mesh/Ninjago.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Mesh/Tornado.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://Mesh/Skeleton.obj" type="ArrayMesh" id=5]
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 1, 3.21045, 1 )
@@ -21,6 +23,13 @@ script = ExtResource( 1 )
 
 [node name="Ninjago" parent="Player" instance=ExtResource( 3 )]
 transform = Transform( -1, 0, -1.01332e-07, 0, 1, 0, 1.01332e-07, 0, -1, -4.76837e-07, 0, 0 )
+
+[node name="Tornado" type="MeshInstance" parent="Player"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1.15345, 0, -1, 0, -4.37114e-08, -0.0605893, -0.648871, 0.0884209 )
+visible = false
+mesh = ExtResource( 4 )
+skeleton = NodePath("../..")
+material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Player"]
 shape = SubResource( 2 )
@@ -50,11 +59,21 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.542 )
 mesh_library = ExtResource( 2 )
 cell_size = Vector3( 11.5, 1, 11.5 )
 data = {
-"cells": PoolIntArray( 0, 0, 1441792, 1, 0, 1441792, 2, 0, 1441792, 3, 0, 1441792, 4, 0, 1441792, 5, 0, 1441792, 6, 0, 1441792, 65533, 0, 1441792, 65534, 0, 1441792, 65535, 0, 1441792, 0, 1, 1441792, 1, 1, 1441792, 2, 1, 1441792, 3, 1, 1441792, 9, 1, 1441792, 10, 1, 1441792, 11, 1, 1441792, 12, 1, 1441792, 65533, 1, 1441792, 65534, 1, 1441792, 65535, 1, 1441792, 65544, 65533, 1441792, 65545, 65533, 1441792, 65548, 65533, 1441792, 65549, 65533, 1441792, 65543, 65534, 1441792, 0, 65535, 1441792, 1, 65535, 1441792, 2, 65535, 1441792, 3, 65535, 1441792, 15, 65535, 1441792, 16, 65535, 1441792, 17, 65535, 1441792, 18, 65535, 1441792, 65533, 65535, 1441792, 65534, 65535, 1441792, 65535, 65535, 1441792 )
+"cells": PoolIntArray( 0, 0, 1441792, 1, 0, 1441792, 2, 0, 1441792, 3, 0, 1441792, 4, 0, 1441792, 5, 0, 1441792, 6, 0, 1441792, 65533, 0, 1441792, 65534, 0, 1441792, 65535, 0, 1441792, 0, 1, 1441792, 1, 1, 1441792, 2, 1, 1441792, 3, 1, 1441792, 9, 1, 1441792, 10, 1, 1441792, 11, 1, 1441792, 16, 1, 0, 17, 1, 0, 65533, 1, 1441792, 65534, 1, 1441792, 65535, 1, 1441792, 14, 65533, 0, 15, 65533, 0, 16, 65533, 0, 8, 65534, 0, 9, 65534, 0, 0, 65535, 1441792, 1, 65535, 1441792, 2, 65535, 1441792, 3, 65535, 1441792, 11, 65535, 0, 12, 65535, 0, 13, 65535, 0, 14, 65535, 0, 18, 65535, 0, 19, 65535, 0, 20, 65535, 0, 65533, 65535, 1441792, 65534, 65535, 1441792, 65535, 65535, 1441792 )
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 1, 0 )
+"_editor_floor_": Vector3( 0, 0, 0 )
 }
+
+[node name="Skeleton" type="MeshInstance" parent="."]
+transform = Transform( -5.00905e-08, 0, -1.14594, 0, 1.14594, 0, 1.14594, 0, -5.00905e-08, 125.807, 5.06302, 10.5664 )
+mesh = ExtResource( 5 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
 
 [connection signal="body_entered" from="Map/Respawn" to="Player" method="_on_Respawn_body_entered"]
