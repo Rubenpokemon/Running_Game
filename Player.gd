@@ -33,11 +33,19 @@ func _input(event):
 			$Ninjago.show()
 			attacking = "No"
 
+
+
+
+
 func check_L_R():
 	if Input.is_action_pressed("Left"):
 		velocity.z = -speed * 0.75
-	if Input.is_action_pressed("Right"):
+	elif Input.is_action_pressed("Right"):
 		velocity.z = speed * 0.75
+
+	elif not Input.is_action_pressed("Right") or Input.is_action_pressed("Left"):
+		velocity.z = 0
+
 
 func _process(delta):
 	movement(delta)
@@ -50,6 +58,9 @@ func movement(delta):
 		if gravity < gravity_limit:
 			gravity = gravity + gravity_limit/18
 
+	if translation.y <= -10:
+		get_tree().reload_current_scene()
+
 	if Input.is_action_pressed("Down"):
 		$Ninjago.hide()
 		$Tornado.show()
@@ -58,10 +69,8 @@ func movement(delta):
 	if attacking == "Yes":
 		$Tornado.rotation_degrees.y += 10
 
-func _on_Respawn_body_entered(body):
-	if body.name == "Player":
-		print ("Fell out of map")
-		get_tree().reload_current_scene()
+
+
 
 func change_rotation():
 	if velocity.z == 0 :
