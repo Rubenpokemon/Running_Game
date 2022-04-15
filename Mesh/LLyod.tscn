@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Mesh/Green.material" type="Material" id=1]
+[ext_resource path="res://Materials/LLyod_Chest_Front.jpg" type="Texture" id=2]
+[ext_resource path="res://Materials/Yellow.material" type="Material" id=3]
+[ext_resource path="res://Mesh/LLyod.glb" type="PackedScene" id=4]
+
+[sub_resource type="SpatialMaterial" id=1]
+resource_name = "Skeleton Face"
+vertex_color_use_as_albedo = true
+params_cull_mode = 2
+albedo_texture = ExtResource( 2 )
+roughness = 0.5
+
+[node name="LLyod" instance=ExtResource( 4 )]
+
+[node name="Llyod" parent="." index="0"]
+material/0 = ExtResource( 1 )
+material/1 = ExtResource( 3 )
+material/3 = SubResource( 1 )

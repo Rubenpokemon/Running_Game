@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Tiles/Grass_Tiles2.tres" type="MeshLibrary" id=1]
+[ext_resource path="res://Levels/Enemy Spawn Points.gd" type="Script" id=2]
+[ext_resource path="res://Levels/Level.gd" type="Script" id=3]
+
+[node name="Level" type="Spatial"]
+script = ExtResource( 3 )
+length = 30
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+cell_size = Vector3( 11.5, 1.5, 11.5 )
+data = {
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 655360, 2, 0, 655360, 5, 0, 655360, 6, 0, 655360, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 18, 0, 0, 20, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0, 29, 0, 0, 1, 1, 655360, 4, 1, 655360, 5, 1, 655360, 6, 1, 655360, 7, 1, 655360, 13, 1, 0, 17, 1, 0, 19, 1, 0, 22, 1, 0, 23, 1, 0, 5, 2, 655360, 6, 2, 655360, 7, 2, 655360, 8, 2, 655360, 10, 2, 0, 11, 2, 0, 17, 2, 0, 19, 2, 0, 6, 3, 655360, 10, 3, 0, 18, 3, 0, 10, 4, 0, 11, 4, 0, 8, 65532, 0, 9, 65532, 0, 11, 65532, 0, 18, 65532, 0, 9, 65533, 0, 10, 65533, 0, 11, 65533, 0, 12, 65533, 0, 17, 65533, 0, 19, 65533, 0, 1, 65534, 655360, 7, 65534, 0, 8, 65534, 0, 9, 65534, 0, 11, 65534, 0, 17, 65534, 0, 19, 65534, 0, 22, 65534, 0, 23, 65534, 0, 0, 65535, 655360, 1, 65535, 655360, 13, 65535, 0, 14, 65535, 0, 18, 65535, 0, 20, 65535, 0, 26, 65535, 0, 27, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="Enemy Spawner" type="Spatial" parent="."]
+script = ExtResource( 2 )
+enemies_to_spawn = 1
+
+[node name="Spawnpoint" type="Spatial" parent="Enemy Spawner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 84.0677, 5.37505, 28.3224 )
+
+[node name="Spawnpoint2" type="Spatial" parent="Enemy Spawner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 163.546, 5.37505, 5.90947 )
+
+[node name="Spawnpoint3" type="Spatial" parent="Enemy Spawner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 263.997, 5.37505, -14.5368 )
