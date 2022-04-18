@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Mesh/Player Parts/Player_Model.glb" type="PackedScene" id=1]
 [ext_resource path="res://Mesh/Player Parts/Player_Model.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Mesh/Player Parts/Yellow.material" type="Material" id=6]
 [ext_resource path="res://Mesh/Player Parts/Hood_Material.tres" type="Material" id=7]
 [ext_resource path="res://Mesh/Player Parts/Pants_Material.tres" type="Material" id=8]
+[ext_resource path="res://Mesh/Player Parts/Hair/Head.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Animation" id=11]
 resource_name = "Jump"
@@ -316,23 +317,27 @@ material/0 = ExtResource( 8 )
 transform = Transform( 1.44649, -7.10542e-15, -2.13162e-14, 7.10542e-15, 1.44649, -4.71363e-14, 2.13162e-14, 4.71363e-14, 1.44649, -0.0224106, 0.0244434, -0.536963 )
 material/0 = ExtResource( 8 )
 
-[node name="Head" parent="." index="3"]
+[node name="Head2" parent="." index="3" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.70664, 0.197012 )
+
+[node name="Head" parent="." index="4"]
 transform = Transform( 0.098042, 0, -1.56767e-16, 0, 0.098042, 4.44089e-16, 0, 0, 0.098042, 0.027, 4.587, 0.166 )
+visible = false
 material/0 = ExtResource( 7 )
 material/1 = ExtResource( 6 )
 
-[node name="Right_Arm" parent="." index="4"]
+[node name="Right_Arm" parent="." index="5"]
 transform = Transform( 0.138938, 0.000267655, -0.0449273, -0.0408549, 0.000910513, -0.152787, 7.87665e-08, 0.145411, 0.0010394, -0.288323, 3.5155, 0.160101 )
 material/0 = ExtResource( 5 )
 
-[node name="Left_Arm" parent="." index="5"]
+[node name="Left_Arm" parent="." index="6"]
 transform = Transform( 0.142744, -0.000876518, -0.0268527, -0.0238655, -0.0361649, -0.152005, -0.00523974, 0.140842, -0.0391984, -0.359303, 3.5155, 0.160101 )
 material/0 = ExtResource( 5 )
 
-[node name="Right_Hand" parent="." index="6"]
+[node name="Right_Hand" parent="." index="7"]
 transform = Transform( 0.050592, -1.37632, -0.153395, 0.349768, 0.16122, -1.33117, 1.33995, 0.00988183, 0.353268, -0.0649051, 2.79813, 0.67045 )
 material/0 = ExtResource( 6 )
 
-[node name="Left_Hand" parent="." index="7"]
+[node name="Left_Hand" parent="." index="8"]
 transform = Transform( -6.05739e-08, -1.38577, 6.05739e-08, 0, -6.05739e-08, -1.38577, 1.38577, -6.05739e-08, 2.64777e-15, 0.0262898, 2.69533, 0.502002 )
 material/0 = ExtResource( 6 )
