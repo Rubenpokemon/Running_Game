@@ -106,8 +106,10 @@ func change_shirt(shirt,match_color):
 	$Player_Model.change_shirt(shirt,match_color)
 
 func change_part_color(color,part):
-	$Player_Model.change_part_color(color,part)
-	set_tornado_color(color)
+	if not part == "Tornado":
+		$Player_Model.change_part_color(color,part)
+	else:
+		set_tornado_color(color)
 
 func set_tornado_color(color):
 	var mat = $Tornado.get_surface_material(0)

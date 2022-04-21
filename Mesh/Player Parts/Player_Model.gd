@@ -8,7 +8,7 @@ func _ready():
 	$AnimationPlayer.play("Running")
 	$AnimationPlayer.playback_speed = 2
 #	mat = $Head.get_surface_material(0)
-#	set_character()
+	set_character(Color(0.05,0.4,0.09),"Llyod","res://Materials/LLyod_Chest_Front.jpg")
 
 var character_colors = [Color.red,Color.white,Color(0,0.4,1),Color.black,Color(0.05,0.4,0.09)]
 
@@ -44,7 +44,8 @@ func change_part_color(color,part):
 		material = $legomantrusi/legomanpolySurface23/Groin.get_surface_material(0)
 	elif part == "Head":
 		material = $Head.get_surface_material(0)
-
+	elif part == "Hands":
+		material = $Right_Hand.get_surface_material(0)
 
 	material.albedo_color = color
 	print (part)

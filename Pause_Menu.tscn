@@ -147,6 +147,7 @@ font_data = ExtResource( 1 )
 script = SubResource( 1 )
 
 [node name="Pause" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -274,7 +275,6 @@ margin_right = 870.0
 margin_bottom = 405.0
 
 [node name="Character Customize" type="Control" parent="."]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -423,6 +423,36 @@ custom_fonts/font = SubResource( 9 )
 text = "Sleeves"
 script = ExtResource( 5 )
 body_part = "Sleeves"
+
+[node name="Hand" type="Button" parent="Character Customize/Part Selector"]
+margin_left = 268.0
+margin_top = 253.0
+margin_right = 362.0
+margin_bottom = 308.0
+custom_fonts/font = SubResource( 9 )
+text = "Hands"
+script = ExtResource( 5 )
+body_part = "Hands"
+
+[node name="Hand2" type="Button" parent="Character Customize/Part Selector"]
+margin_left = -23.0
+margin_top = 253.0
+margin_right = 71.0
+margin_bottom = 308.0
+custom_fonts/font = SubResource( 9 )
+text = "Hands"
+script = ExtResource( 5 )
+body_part = "Hands"
+
+[node name="Tornado" type="Button" parent="Character Customize/Part Selector"]
+margin_left = 419.0
+margin_top = 294.0
+margin_right = 513.0
+margin_bottom = 421.0
+custom_fonts/font = SubResource( 9 )
+text = "Tornado"
+script = ExtResource( 5 )
+body_part = "Tornado"
 
 [connection signal="pressed" from="Pause/Resume" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="Pause/FullScreen" to="." method="_on_FullScreen_pressed"]
