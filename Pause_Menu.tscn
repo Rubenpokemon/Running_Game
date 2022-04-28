@@ -147,7 +147,6 @@ font_data = ExtResource( 1 )
 script = SubResource( 1 )
 
 [node name="Pause" type="Control" parent="."]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -275,6 +274,7 @@ margin_right = 870.0
 margin_bottom = 405.0
 
 [node name="Character Customize" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
