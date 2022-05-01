@@ -326,10 +326,10 @@ material/0 = ExtResource( 8 )
 
 [node name="Head2" parent="." index="3" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.70664, 0.197012 )
+visible = false
 
 [node name="Head" parent="." index="4"]
 transform = Transform( 0.098042, 0, -1.56767e-16, 0, 0.098042, 4.44089e-16, 0, 0, 0.098042, 0.027, 4.587, 0.166 )
-visible = false
 material/0 = ExtResource( 7 )
 material/1 = ExtResource( 6 )
 

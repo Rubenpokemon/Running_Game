@@ -44,6 +44,7 @@ func _input(event):
 			player_model.show()
 			attacking = "No"
 
+
 	if event.is_action_pressed("Down"):
 		player_model.hide()
 		$Tornado.show()

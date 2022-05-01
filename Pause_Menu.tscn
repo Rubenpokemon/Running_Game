@@ -53,6 +53,8 @@ func _ready():
 	for button in $\"Character Customize/Part Selector\".get_children():
 		button.connect(\"pressed\", self, \"select_part\", [button.body_part])
 
+	get_parent().change_skin(Color.red,\"kai\",\"res://Materials/Kai_Chest.jpg\")
+
 func _on_Change_Skin_pressed():
 	$Pause.hide()
 	$\"Skin Select\".show()
@@ -207,7 +209,7 @@ script = ExtResource( 2 )
 skin_name = "Kai"
 shirt = "res://Materials/Kai_Chest.jpg"
 
-[node name="Zane" type="Button" parent="Skin Select/Buttons"]
+[node name="Jay" type="Button" parent="Skin Select/Buttons"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -216,26 +218,27 @@ margin_left = 219.0
 margin_top = 3.0
 margin_right = 369.0
 margin_bottom = 153.0
-text = "Zane"
-script = ExtResource( 2 )
-color = Color( 1, 1, 1, 1 )
-skin_name = "Zane"
-shirt = "res://Materials/Zane_Chest.jpg"
-
-[node name="Jay" type="Button" parent="Skin Select/Buttons"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 378.0
-margin_top = 3.0
-margin_right = 528.0
-margin_bottom = 153.0
 text = "Jay"
 script = ExtResource( 2 )
 color = Color( 0, 0.4, 1, 1 )
 skin_name = "Jay"
 shirt = "res://Materials/Jay_Chest.jpg"
+
+[node name="Zane" type="Button" parent="Skin Select/Buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 380.0
+margin_top = 3.0
+margin_right = 530.0
+margin_bottom = 153.0
+disabled = true
+text = "Zane"
+script = ExtResource( 2 )
+color = Color( 1, 1, 1, 1 )
+skin_name = "Zane"
+shirt = "res://Materials/Zane_Chest.jpg"
 
 [node name="Cole" type="Button" parent="Skin Select/Buttons"]
 anchor_left = 0.5
@@ -246,6 +249,7 @@ margin_left = 540.0
 margin_top = 3.0
 margin_right = 690.0
 margin_bottom = 153.0
+disabled = true
 text = "Cole"
 script = ExtResource( 2 )
 color = Color( 0, 0, 0, 1 )
@@ -261,6 +265,7 @@ margin_left = 701.0
 margin_top = 3.0
 margin_right = 851.0
 margin_bottom = 153.0
+disabled = true
 text = "Llyod"
 script = ExtResource( 2 )
 color = Color( 0.05, 0.4, 0.09, 1 )
@@ -272,6 +277,7 @@ margin_left = 71.0
 margin_top = 251.0
 margin_right = 870.0
 margin_bottom = 405.0
+disabled = true
 
 [node name="Character Customize" type="Control" parent="."]
 visible = false
