@@ -26,6 +26,7 @@ func _input(event):
 			$Pause.show()
 			$\"Skin Select\".hide()
 			$\"Character Customize\".hide()
+			
 
 
 func _on_Resume_pressed():
@@ -59,6 +60,9 @@ func _on_Change_Skin_pressed():
 	$Pause.hide()
 	$\"Skin Select\".show()
 
+func _on_Upgrades_pressed():
+	$Pause.hide()
+	$Forge.show()
 
 func char_chosen(color,skin_name,shirt):
 #	Global.custom_shirt = \"No\"
@@ -86,6 +90,7 @@ func change_part_color(color):
 func _on_ColorPickerButton_popup_closed():
 	var color = $\"Character Customize/Colors/ColorPickerButton\".color
 	change_part_color(color)
+
 "
 
 [sub_resource type="DynamicFont" id=2]
@@ -168,19 +173,27 @@ margin_bottom = 342.0
 custom_fonts/font = SubResource( 2 )
 text = "Fullscreen"
 
-[node name="Change Skin" type="Button" parent="Pause"]
+[node name="Forge" type="Button" parent="Pause"]
 margin_left = 11.0
 margin_top = 346.0
 margin_right = 524.0
 margin_bottom = 444.0
 custom_fonts/font = SubResource( 2 )
-text = "Change skin"
+text = "Forge"
 
-[node name="Quit" type="Button" parent="Pause"]
+[node name="Change Skin2" type="Button" parent="Pause"]
 margin_left = 11.0
 margin_top = 448.0
 margin_right = 524.0
 margin_bottom = 546.0
+custom_fonts/font = SubResource( 2 )
+text = "Change skin"
+
+[node name="Quit" type="Button" parent="Pause"]
+margin_left = 11.0
+margin_top = 550.0
+margin_right = 524.0
+margin_bottom = 648.0
 custom_fonts/font = SubResource( 2 )
 text = "Quit"
 
@@ -460,9 +473,15 @@ text = "Tornado"
 script = ExtResource( 5 )
 body_part = "Tornado"
 
+[node name="Forge" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
 [connection signal="pressed" from="Pause/Resume" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="Pause/FullScreen" to="." method="_on_FullScreen_pressed"]
-[connection signal="pressed" from="Pause/Change Skin" to="." method="_on_Change_Skin_pressed"]
+[connection signal="pressed" from="Pause/Forge" to="." method="_on_Upgrades_pressed"]
+[connection signal="pressed" from="Pause/Change Skin2" to="." method="_on_Change_Skin_pressed"]
 [connection signal="pressed" from="Pause/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="Skin Select/Show Char Custom" to="." method="_on_Show_Char_Custom_pressed"]
 [connection signal="popup_closed" from="Character Customize/Colors/ColorPickerButton" to="." method="_on_ColorPickerButton_popup_closed"]

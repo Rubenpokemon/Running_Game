@@ -16,6 +16,9 @@ var gravity = 0.1 * speed_bonus
 var player_model
 var anim
 
+var bricks = 0
+var bones = 0
+
 func _ready():
 	velocity.x = speed # * speed_bonus
 	player_model = $Player_Model
@@ -117,3 +120,15 @@ func set_tornado_color(color):
 	mat.albedo_color = color
 	if mat.albedo_color == Color.black:
 		mat.albedo_color = Color(0.5,0.25,0)
+
+
+func add_item(item):
+	if item == "Bone":
+		bones += 1
+	elif item == "Brick":
+		bricks += 1
+	update_item_count()
+
+func update_item_count():
+	$Hud/HBoxContainer/Bone_Count.text = String(bones)
+	$Hud/HBoxContainer/Brick_Count.text = String(bricks)

@@ -8,3 +8,4 @@ func _on_Enemy_body_entered(body):
 			print("Death")
 		elif body.attacking == "Yes":
 			queue_free()
+			body.add_item("Bone")
