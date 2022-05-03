@@ -19,5 +19,4 @@ func _ready():
 func _on_Area_body_entered(body):
 	Global.brick_spawn_chance = Global.base_brick_spawnrate
 	body.add_item("Brick")
-	print (body)
 	queue_free()

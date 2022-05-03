@@ -24,6 +24,9 @@ func _ready():
 	player_model = $Player_Model
 	anim = $Player_Model/AnimationPlayer
 
+	bricks = 100
+	bones = 100
+	update_item_count()
 
 func _input(event):
 	if event.is_action_pressed("Left"):
@@ -132,3 +135,11 @@ func add_item(item):
 func update_item_count():
 	$Hud/HBoxContainer/Bone_Count.text = String(bones)
 	$Hud/HBoxContainer/Brick_Count.text = String(bricks)
+
+func forge_item(bricks_needed,bones_needed):
+	if bricks >= bricks_needed and bones >= bones_needed:
+		bricks -= bricks_needed
+		bones -= bones_needed
+		update_item_count()
+
+

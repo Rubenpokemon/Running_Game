@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Materials/ClassicWriteDemoRegular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/Skin_Select_Button.gd" type="Script" id=2]
 [ext_resource path="res://Shirt_Button.gd" type="Script" id=3]
 [ext_resource path="res://Sleeve_Color.gd" type="Script" id=4]
 [ext_resource path="res://Part_Selector.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Forge_Button.tscn" type="PackedScene" id=6]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Control
@@ -26,7 +27,7 @@ func _input(event):
 			$Pause.show()
 			$\"Skin Select\".hide()
 			$\"Character Customize\".hide()
-			
+			$Forge.hide()
 
 
 func _on_Resume_pressed():
@@ -54,7 +55,22 @@ func _ready():
 	for button in $\"Character Customize/Part Selector\".get_children():
 		button.connect(\"pressed\", self, \"select_part\", [button.body_part])
 
-	get_parent().change_skin(Color.red,\"kai\",\"res://Materials/Kai_Chest.jpg\")
+	for button in $Forge/Buttons.get_children():
+		button.connect(\"pressed\", self, \"forge_item\", [button.bricks_needed,button.bones_needed,button.skin])
+
+	#get_parent().change_skin(Color,\"kai\",\"res://Materials/Kai_Chest.jpg\")
+	unlock_skins()
+
+var unlocked_skins = [\"Llyod\"]
+
+func unlock_skins():
+	for button in $\"Skin Select/Buttons\".get_children():
+		var all_skins = [\"Kai\",\"Jay\",\"Zane\",\"Cole\",\"Llyod\"]
+		for i in unlocked_skins:
+			if i == button.name:
+				print(\"Has Skin \", i)
+				button.disabled = false
+
 
 func _on_Change_Skin_pressed():
 	$Pause.hide()
@@ -90,6 +106,18 @@ func change_part_color(color):
 func _on_ColorPickerButton_popup_closed():
 	var color = $\"Character Customize/Colors/ColorPickerButton\".color
 	change_part_color(color)
+
+func forge_item(bricks,bones,skin):
+	if skin and get_parent().bricks >= bricks and get_parent().bones >= bones:
+		unlocked_skins.append(skin)
+		unlock_skins()
+		for button in $Forge/Buttons.get_children():
+			if button.name == skin:
+				button.disabled = true
+
+
+
+	get_parent().forge_item(bricks,bones)
 
 "
 
@@ -217,6 +245,7 @@ margin_left = 60.0
 margin_top = 3.0
 margin_right = 210.0
 margin_bottom = 153.0
+disabled = true
 text = "Kai"
 script = ExtResource( 2 )
 skin_name = "Kai"
@@ -231,6 +260,7 @@ margin_left = 219.0
 margin_top = 3.0
 margin_right = 369.0
 margin_bottom = 153.0
+disabled = true
 text = "Jay"
 script = ExtResource( 2 )
 color = Color( 0, 0.4, 1, 1 )
@@ -281,7 +311,7 @@ margin_bottom = 153.0
 disabled = true
 text = "Llyod"
 script = ExtResource( 2 )
-color = Color( 0.05, 0.4, 0.09, 1 )
+color = Color( 0.0509804, 0.4, 0.0901961, 1 )
 skin_name = "Llyod"
 shirt = "res://Materials/LLyod_Chest_Front.jpg"
 
@@ -475,8 +505,42 @@ body_part = "Tornado"
 
 [node name="Forge" type="Control" parent="."]
 visible = false
+margin_right = 104.0
+margin_bottom = 92.0
+
+[node name="Buttons" type="Control" parent="Forge"]
 margin_right = 40.0
 margin_bottom = 40.0
+
+[node name="Kai" parent="Forge/Buttons" instance=ExtResource( 6 )]
+margin_left = 99.0
+margin_right = 245.0
+skin = "Kai"
+bricks_needed = 0
+description = "Unlocks Kai"
+
+[node name="Jay" parent="Forge/Buttons" instance=ExtResource( 6 )]
+margin_left = 272.0
+margin_right = 418.0
+skin = "Jay"
+bones_needed = 15
+description = "Unlocks Jay"
+
+[node name="Zane" parent="Forge/Buttons" instance=ExtResource( 6 )]
+margin_left = 451.0
+margin_right = 597.0
+skin = "Zane"
+bones_needed = 30
+bricks_needed = 10
+description = "Unlocks Zane"
+
+[node name="Cole" parent="Forge/Buttons" instance=ExtResource( 6 )]
+margin_left = 621.0
+margin_right = 767.0
+skin = "Cole"
+bones_needed = 45
+bricks_needed = 15
+description = "Unlocks Cole"
 
 [connection signal="pressed" from="Pause/Resume" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="Pause/FullScreen" to="." method="_on_FullScreen_pressed"]
