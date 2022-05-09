@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Materials/Aloevera-OVoWO.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scenes/Forge_Button.gd" type="Script" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Materials/Zane_Chest.jpg" type="Texture" id=4]
+[ext_resource path="res://Materials/Images/Golden_Brick.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 22
@@ -35,7 +36,7 @@ margin_left = 13.0
 margin_top = -65.0
 margin_right = 53.0
 margin_bottom = -25.0
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 expand = true
 
 [node name="Bricks" type="Label" parent="."]

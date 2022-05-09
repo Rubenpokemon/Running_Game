@@ -8,15 +8,14 @@ extends MeshInstance
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$AnimationPlayer.play("Spin")
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	rotate_y(0.05)
 
 
 func _on_Area_body_entered(body):
-	Global.brick_spawn_chance = Global.base_brick_spawnrate
-	body.add_item("Brick")
-	queue_free()
+	if body.name == "Player":
+		Global.brick_spawn_chance = Global.base_brick_spawnrate
+		body.add_item("Brick")
+		queue_free()

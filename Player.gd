@@ -133,8 +133,8 @@ func add_item(item):
 	update_item_count()
 
 func update_item_count():
-	$Hud/HBoxContainer/Bone_Count.text = String(bones)
-	$Hud/HBoxContainer/Brick_Count.text = String(bricks)
+	$Hud/Bone_Count.text = String(bones)
+	$Hud/Brick_Count.text = String(bricks)
 
 func forge_item(bricks_needed,bones_needed):
 	if bricks >= bricks_needed and bones >= bones_needed:

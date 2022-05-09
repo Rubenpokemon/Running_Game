@@ -25,8 +25,8 @@ func spawn_level():
 
 	if grass_levels.size() >= 1:
 		grass_levels.shuffle()
-		#var x = grass_levels.front()
-		var x = preload("res://Levels/Grass_Level_6.tscn")
+		var x = grass_levels.front()
+		#var x = preload("res://Levels/Grass_Level_6.tscn")
 		#grass_levels.erase(x) 
 		var spawninglevel = x.instance()
 		spawninglevel.translation.x = Global.map_length * 11.5
