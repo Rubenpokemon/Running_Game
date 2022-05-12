@@ -128,13 +128,15 @@ func set_tornado_color(color):
 func add_item(item):
 	if item == "Bone":
 		bones += 1
+		if $Quest.current_quest == "Skeletons":
+			$Quest.add_progress()
 	elif item == "Brick":
 		bricks += 1
 	update_item_count()
 
 func update_item_count():
-	$Hud/Bone_Count.text = String(bones)
-	$Hud/Brick_Count.text = String(bricks)
+	$Hud/Items/Bone_Count.text = String(bones)
+	$Hud/Items/Brick_Count.text = String(bricks)
 
 func forge_item(bricks_needed,bones_needed):
 	if bricks >= bricks_needed and bones >= bones_needed:
