@@ -18,4 +18,5 @@ func _on_Area_body_entered(body):
 	if body.name == "Player":
 		Global.brick_spawn_chance = Global.base_brick_spawnrate
 		body.add_item("Brick")
+		body.complete_task("Bricks")
 		queue_free()

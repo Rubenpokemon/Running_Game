@@ -17,7 +17,8 @@ margin_top = 48.28
 margin_right = 305.0
 margin_bottom = 81.28
 custom_fonts/font = SubResource( 9 )
-text = "Defeat 10 Skeletons"
+text = "Text Text Text Text"
+align = 1
 
 [node name="Bar" type="ProgressBar" parent="."]
 margin_top = 81.28

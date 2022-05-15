@@ -24,6 +24,7 @@ func _on_CheckPoint_body_entered(body):
 	if used == "No":
 		if body.name == "Player":
 			body.respawn_location = $CheckPoint.global_transform.origin
+			body.complete_task("Levels")
 			used = "Yes"
 			get_parent().spawn_level()
 

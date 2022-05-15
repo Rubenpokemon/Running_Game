@@ -93,6 +93,13 @@ func movement(delta):
 		$Tornado.rotation_degrees.y += 10
 
 
+func complete_task(completed_task):
+	if $Quest.current_quest == "Levels" and completed_task == "Levels":
+		$Quest.add_progress()
+	if $Quest.current_quest == "Bricks" and completed_task == "Bricks":
+		$Quest.add_progress()
+
+
 func change_rotation():
 	if velocity.z == 0 :
 		player_model.rotation_degrees.y = -180
