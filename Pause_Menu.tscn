@@ -320,7 +320,6 @@ margin_left = 71.0
 margin_top = 251.0
 margin_right = 870.0
 margin_bottom = 405.0
-disabled = true
 
 [node name="Character Customize" type="Control" parent="."]
 visible = false

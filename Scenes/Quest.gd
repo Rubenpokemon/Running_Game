@@ -4,7 +4,7 @@ extends Control
 
 var quest_types = ["Skeletons","Bricks","Levels"]
 var quest_descriptions = ["Defeat","Collect","Finish"]
-var quest_progress = [10,2,5]
+var quest_progress = [8,2,5]
 
 var current_quest = "Skeletons"
 
