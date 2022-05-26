@@ -28,7 +28,6 @@ func spawn_level():
 	if levels_to_spawn.size() == 0:
 		levels_to_spawn.append_array(grass_levels)
 		levels_to_spawn.shuffle()
-		print(levels_to_spawn)
 		#spawn_level()
 
 	if levels_to_spawn.size() >= 1:
@@ -37,7 +36,6 @@ func spawn_level():
 		#var x = preload("res://Levels/Grass_Level_6.tscn")
 		levels_to_spawn.erase(x) 
 		var spawninglevel = x.instance()
-		print (levels_to_spawn)
 		spawninglevel.translation.x = Global.map_length * 11.5
 		add_child(spawninglevel)
 		spawn_checkpoint()

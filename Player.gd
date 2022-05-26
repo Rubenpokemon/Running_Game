@@ -109,7 +109,6 @@ func change_rotation():
 		player_model.rotation_degrees.y = -165
 
 func respawn():
-	print("Respawn")
 	translation = respawn_location
 
 func change_skin(color,skin_name,shirt):
