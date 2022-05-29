@@ -17,7 +17,7 @@ points = PoolVector3Array( 0, 0.104778, -3.80464, 5.68971, 1.08572, 0.0223099, -
 [node name="Spatial" type="Spatial"]
 
 [node name="Base" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 1 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -0.0615654 )
 mesh = ExtResource( 2 )
 material/0 = null
 material/1 = null
@@ -28,7 +28,7 @@ material/1 = null
 shape = SubResource( 15 )
 
 [node name="Grass_Base_Half" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7297, 0, 0 )
 mesh = ExtResource( 1 )
 material/0 = null
 material/1 = null
@@ -40,7 +40,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.08598, 0.269869, 0.0940251 
 shape = SubResource( 14 )
 
 [node name="Grass_Base_Corner" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6408, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.40601, 0, 0 )
 mesh = ExtResource( 4 )
 material/0 = null
 material/1 = null
@@ -51,7 +51,7 @@ material/1 = null
 shape = SubResource( 4 )
 
 [node name="Grass_Base_Stair" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6452, -0.00021112, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0847, -0.00021112, 0 )
 mesh = ExtResource( 3 )
 skeleton = NodePath("../Grass_Base_Corner")
 material/0 = null
