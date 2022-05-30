@@ -30,6 +30,7 @@ shape = SubResource( 8 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.55487, 3.97545, 5.72202 )
 
 [node name="Brick" parent="Brick Spawn Point" instance=ExtResource( 3 )]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2.5, 0, -2, 0, -8.74228e-08, 0, 0, 0 )
 skeleton = NodePath("../..")
 
 [connection signal="body_entered" from="CheckPoint" to="." method="_on_CheckPoint_body_entered"]

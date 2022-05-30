@@ -2,11 +2,15 @@ extends GridMap
 
 
 var used = "No"
-
+var test = preload("res://Tiles/Grass_Base_Half.obj")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
+	
+	set_tiles()
+	#mesh_library.set_item_mesh(0,test)
+	
 	var spawn_brick = randi()%Global.brick_spawn_chance
 	if spawn_brick <= 1:
 		pass
@@ -17,7 +21,8 @@ func _ready():
 
 #func _process(delta):
 
-
+func set_tiles():
+	mesh_library.set_item_mesh(0,Global.tiles[0])
 
 
 func _on_CheckPoint_body_entered(body):
