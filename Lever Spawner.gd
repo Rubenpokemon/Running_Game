@@ -32,9 +32,9 @@ func spawn_level():
 
 	if levels_to_spawn.size() >= 1:
 		levels_to_spawn.shuffle()
-		#var x = levels_to_spawn.front()
-		var x = preload("res://Levels/Grass_Level_1.tscn")
-		#levels_to_spawn.erase(x) 
+		var x = levels_to_spawn.front()
+		#var x = preload("res://Levels/Grass_Level_1.tscn")
+		levels_to_spawn.erase(x) 
 		var spawninglevel = x.instance()
 		spawninglevel.translation.x = Global.map_length * 11.5
 		add_child(spawninglevel)
