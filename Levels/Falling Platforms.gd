@@ -22,4 +22,4 @@ func _on_Area_body_entered(body):
 		used = "Yes"
 		platforms.shuffle()
 		falling_platform = platforms[0]
-		falling_platform.queue_free()
+		falling_platform.fall()
