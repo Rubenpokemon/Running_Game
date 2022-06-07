@@ -41,6 +41,10 @@ func _input(event):
 		velocity.z = 0
 		check_L_R()
 
+	if event.is_action_pressed("Respawn"):
+		respawn()
+
+
 	if event.is_action_pressed("Jump") and $Feet.get_overlapping_bodies().size() != 0:
 		gravity = gravity - jump_force
 		#anim.playback_speed = 0.5
@@ -96,7 +100,7 @@ func movement(delta):
 func complete_task(completed_task):
 	if $Quest.current_quest == "Levels" and completed_task == "Levels":
 		$Quest.add_progress()
-	if $Quest.current_quest == "Bricks" and completed_task == "Bricks":
+	elif $Quest.current_quest == "Bricks" and completed_task == "Bricks":
 		$Quest.add_progress()
 
 
