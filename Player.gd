@@ -46,6 +46,22 @@ func _input(event):
 
 
 	if event.is_action_pressed("Jump") and $Feet.get_overlapping_bodies().size() != 0:
+		jump()
+
+
+	if event.is_action_pressed("Down"):
+		if attacking == "No":
+			player_model.hide()
+			$Tornado.show()
+			attacking = "Yes"
+		else:
+			$Tornado.hide()
+			player_model.show()
+			attacking = "No"
+
+
+
+func jump():
 		gravity = gravity - jump_force
 		#anim.playback_speed = 0.5
 		anim.play("Jump")
@@ -53,13 +69,6 @@ func _input(event):
 			$Tornado.hide()
 			player_model.show()
 			attacking = "No"
-
-
-	if event.is_action_pressed("Down"):
-		player_model.hide()
-		$Tornado.show()
-		attacking = "Yes"
-
 
 func check_L_R():
 	if Input.is_action_pressed("Left"):

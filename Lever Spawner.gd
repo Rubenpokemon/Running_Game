@@ -4,17 +4,21 @@ var levels_done = -1 #Goes to 0 when the first level spawns in
 
 var checkpoint = preload("res://Levels/Check Point.tscn")
 
-var grass_levels = [preload("res://Levels/Grass_Level_1.tscn"),preload("res://Levels/Grass_Level_2.tscn"),preload("res://Levels/Grass_Level_3.tscn"),preload("res://Levels/Grass_Level_4.tscn"),preload("res://Levels/Grass_Level_5.tscn"),preload("res://Levels/Grass_Level_6.tscn")
-,preload("res://Levels/Snow_Level_1.tscn")]
+var grass_levels = [preload("res://Levels/Grass_Level_1.tscn"),preload("res://Levels/Grass_Level_2.tscn"),preload("res://Levels/Grass_Level_3.tscn"),preload("res://Levels/Grass_Level_4.tscn"),preload("res://Levels/Grass_Level_5.tscn"),preload("res://Levels/Grass_Level_6.tscn")]
+var snow_levels = [preload("res://Levels/Snow_Level_1.tscn")]
 
+var level_types = [grass_levels,snow_levels]
 var levels_to_spawn = []
-
+var level_pack 
 var loaded_levels = []
 
 
 func _ready():
 	randomize()
 	#spawn_level()
+	level_pack = level_types[Global.level_type]
+	Global.map_length = 0
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func spawn_checkpoint():
@@ -27,9 +31,9 @@ func spawn_checkpoint():
 func spawn_level():
 
 	if levels_to_spawn.size() == 0:
-		levels_to_spawn.append_array(grass_levels)
+		levels_to_spawn.append_array(level_pack)
 		levels_to_spawn.shuffle()
-		#spawn_level()
+
 
 	if levels_to_spawn.size() >= 1:
 		levels_to_spawn.shuffle()

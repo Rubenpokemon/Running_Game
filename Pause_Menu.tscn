@@ -68,7 +68,6 @@ func unlock_skins():
 		var all_skins = [\"Kai\",\"Jay\",\"Zane\",\"Cole\",\"Llyod\"]
 		for i in unlocked_skins:
 			if i == button.name:
-				print(\"Has Skin \", i)
 				button.disabled = false
 
 
@@ -77,8 +76,9 @@ func _on_Change_Skin_pressed():
 	$\"Skin Select\".show()
 
 func _on_Upgrades_pressed():
-	$Pause.hide()
-	$Forge.show()
+	#$Pause.hide()
+	#$Forge.show()
+	get_tree().change_scene(\"res://Scenes/Main_Menu.tscn\")
 
 func char_chosen(color,skin_name,shirt):
 #	Global.custom_shirt = \"No\"
@@ -207,7 +207,7 @@ margin_top = 346.0
 margin_right = 524.0
 margin_bottom = 444.0
 custom_fonts/font = SubResource( 2 )
-text = "Forge"
+text = "Main Menu"
 
 [node name="Change Skin2" type="Button" parent="Pause"]
 margin_left = 11.0

@@ -1,10 +1,13 @@
 extends Node
 
-var map_tiles = "res://Tiles/Grass_Tiles.tres"
+var worlds_unlocked = 2
+var level_type
 
 var map_length = 0
 
-var tiles = [preload("res://Tiles/Base.obj")]#,"res://Tiles/Grass_Base_Half.obj"]
+
+var active_world
+var world_bricks_left = [1,5,10,25,40,100]
 
 
 var player_color = Color.white
@@ -13,6 +16,6 @@ var player_color = Color.white
 var custom_shirt = "No"
 
 
-var base_brick_spawnrate = 5
-var brick_spawn_chance = 5
+var base_brick_spawnrate = 1 #5
+var brick_spawn_chance = 1 #5
 var bricks = 0

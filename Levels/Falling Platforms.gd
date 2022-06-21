@@ -9,7 +9,6 @@ var speed = 10
 func _ready():
 	randomize()
 	platforms = $Platforms.get_children()
-	print (platforms)
 
 
 func _process(_delta):

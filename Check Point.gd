@@ -8,10 +8,13 @@ var test = preload("res://Tiles/Grass_Base_Half.obj")
 func _ready():
 	randomize()
 	var spawn_brick = randi()%Global.brick_spawn_chance
-	if spawn_brick <= 1:
-		pass
+	if Global.world_bricks_left[Global.active_world] >= 1:
+		if spawn_brick <= 1:
+			pass
+		else:
+			Global.brick_spawn_chance -= 1
+			$"Brick Spawn Point/Brick".queue_free()
 	else:
-		Global.brick_spawn_chance -= 1
 		$"Brick Spawn Point/Brick".queue_free()
 
 

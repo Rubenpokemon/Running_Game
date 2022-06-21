@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Golden_Brick.gd" type="Script" id=1]
 [ext_resource path="res://Mesh/Golden_Brick.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Materials/Aloevera-OVoWO.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Materials/Cole_Chest.jpg" type="Texture" id=4]
 
 [sub_resource type="SpatialMaterial" id=5]
 albedo_color = Color( 1, 0.72549, 0, 1 )
@@ -109,6 +111,11 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 1, 2 )
 }
 
+[sub_resource type="DynamicFont" id=6]
+outline_size = 1
+outline_color = Color( 0.439216, 0.439216, 0.439216, 1 )
+font_data = ExtResource( 3 )
+
 [node name="Brick" type="MeshInstance"]
 transform = Transform( -8.74228e-08, 0, 2, 0, 2.5, 0, -2, 0, -8.74228e-08, 0, 0, 0 )
 mesh = ExtResource( 2 )
@@ -124,4 +131,56 @@ shape = SubResource( 2 )
 anims/RESET = SubResource( 3 )
 anims/Spin = SubResource( 4 )
 
+[node name="Despawn" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Popup" type="Control" parent="."]
+pause_mode = 2
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Popup"]
+margin_left = -208.0
+margin_top = -68.0
+margin_right = 164.0
+margin_bottom = 86.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Label" type="Label" parent="Popup"]
+margin_left = -201.0
+margin_top = -53.0
+margin_right = 155.0
+margin_bottom = -16.0
+custom_fonts/font = SubResource( 6 )
+text = "You have collected all the bricks in this area!
+To collect more bricks go to a diffrent world!"
+
+[node name="Main_Menu" type="Button" parent="Popup"]
+margin_left = -208.0
+margin_top = 44.0
+margin_right = -105.0
+margin_bottom = 85.0
+custom_fonts/font = SubResource( 6 )
+text = "Main Menu"
+flat = true
+
+[node name="Continue" type="Button" parent="Popup"]
+margin_left = 20.0
+margin_top = 44.0
+margin_right = 163.0
+margin_bottom = 85.0
+custom_fonts/font = SubResource( 6 )
+text = "Continue Playing"
+flat = true
+
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[connection signal="timeout" from="Despawn" to="." method="_on_Despawn_timeout"]
+[connection signal="pressed" from="Popup/Main_Menu" to="." method="_on_Main_Menu_pressed"]
+[connection signal="pressed" from="Popup/Continue" to="." method="_on_Continue_pressed"]
