@@ -1,4 +1,4 @@
-extends GridMap
+extends Spatial
 
 
 var used = "No"
@@ -16,7 +16,7 @@ func _ready():
 			$"Brick Spawn Point/Brick".queue_free()
 	else:
 		$"Brick Spawn Point/Brick".queue_free()
-
+	set_platform()
 
 #func _process(delta):
 
@@ -31,3 +31,6 @@ func _on_CheckPoint_body_entered(body):
 			get_parent().spawn_level()
 
 
+func set_platform():
+	var meshes = $Meshes.get_children()
+	meshes[Global.level_type].show()

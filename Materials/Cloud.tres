@@ -1,0 +1,6 @@
+[gd_resource type="SpatialMaterial" format=2]
+
+[resource]
+resource_name = "Grey"
+flags_transparent = true
+flags_use_shadow_to_opacity = true

@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Cloud_Base.obj-af2103e211d3e13ec5e2574024e9c31f.mesh"
+
+[deps]
+
+files=[ "res://.import/Cloud_Base.obj-af2103e211d3e13ec5e2574024e9c31f.mesh" ]
+
+source_file="res://Tiles/Cloud_Base.obj"
+dest_files=[ "res://.import/Cloud_Base.obj-af2103e211d3e13ec5e2574024e9c31f.mesh", "res://.import/Cloud_Base.obj-af2103e211d3e13ec5e2574024e9c31f.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Tiles/Cloud_Tiles.tres" type="MeshLibrary" id=1]
+[ext_resource path="res://Levels/Enemy Spawn Points.gd" type="Script" id=2]
+[ext_resource path="res://Levels/Level.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Storm_Cloud.tscn" type="PackedScene" id=4]
+
+[node name="Level" type="Spatial"]
+script = ExtResource( 3 )
+length = 25
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+cell_size = Vector3( 11.5, 1.5, 11.5 )
+data = {
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 1048578, 3, 0, 1441793, 8, 0, 2, 9, 0, 1441792, 10, 0, 655360, 11, 0, 1048579, 20, 0, 3, 21, 0, 0, 22, 0, 0, 23, 0, 1048579, 13, 65532, 1441795, 15, 65532, 655363, 13, 65533, 3, 14, 65533, 655360, 15, 65533, 1048579, 1, 65534, 1441794, 2, 65534, 1441792, 3, 65534, 1048577, 14, 65534, 1441793, 20, 65534, 1441795, 21, 65534, 0, 22, 65534, 0, 23, 65534, 655363, 0, 65535, 1441794, 1, 65535, 0, 2, 65535, 655360, 3, 65535, 655360, 7, 65535, 1441792, 8, 65535, 1441792, 12, 65535, 1, 18, 65535, 655361, 19, 65535, 0, 20, 65535, 0, 23, 65535, 0, 24, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="Storm" parent="GridMap" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.8916, 0.709, -5.681 )
+
+[node name="Storm2" parent="GridMap" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 109.069, 0.709, -5.681 )
+
+[node name="Storm3" parent="GridMap" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 120.569, 0.709, -5.681 )
+
+[node name="Storm4" parent="GridMap" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 132.069, 0.709, -5.681 )
+
+[node name="Enemy Spawner" type="Spatial" parent="."]
+script = ExtResource( 2 )
+enemies_to_spawn = 1
+
+[node name="Spawnpoint" type="Spatial" parent="Enemy Spawner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 125.325, 5.37505, 7.45345 )
+
+[node name="Spawnpoint2" type="Spatial" parent="Enemy Spawner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.1683, 5.37505, -3.93963 )
+
+[node name="Spawnpoint3" type="Spatial" parent="Enemy Spawner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 249.742, 5.37505, -16.6948 )
+
+[node name="Spawnpoint4" type="Spatial" parent="Enemy Spawner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 249.742, 5.37505, 7.0626 )
+
+[node name="Spawnpoint5" type="Spatial" parent="Enemy Spawner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 169.147, 5.37505, -27.1335 )

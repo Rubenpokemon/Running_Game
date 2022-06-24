@@ -24,7 +24,7 @@ func set_character(color,skin_name,shirt):
 	var chest_mat = $legomanpCylinder2/legomanpolySurface5/Chest.get_surface_material(0)
 	chest_mat.albedo_texture = load(shirt)
 	chest_mat.albedo_color = Color.white
-
+	change_hair(skin_name)
 
 func change_shirt(shirt,match_color):
 	var shirt_mat = $legomanpCylinder2/legomanpolySurface5/Chest.get_surface_material(0)
@@ -32,6 +32,9 @@ func change_shirt(shirt,match_color):
 		#shirt_mat.albedo_color = chest_color
 		pass
 	shirt_mat.albedo_texture = load(shirt)
+
+func change_hair(skin_name):
+	$Head2.change_hair(skin_name)
 
 var material
 

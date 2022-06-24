@@ -22,7 +22,7 @@ var world_number = 0
 
 var world_names = ["Tutorial","Grasslands","Snowy Mountians", "Electric Skies", "Shaking Grounds", "All of the above"]
 
-var world_requirments = ["None","Complete The Tutorial","Unlock Kai in the Grasslands","Unlock Zane in the Snowy Mountians","Unlock Jay in the Electric Skies","Unlock Cole in the Shaking Grounds"]
+var world_requirments = ["None","Complete The Tutorial","Forge the Sword of Fire","Forge the Shurikens of Ice","Forge the Numchucks of Lightning","Forge the Scythe of Quakes"]
 
 
 

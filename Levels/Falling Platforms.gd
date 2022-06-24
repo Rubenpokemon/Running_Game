@@ -22,3 +22,6 @@ func _on_Area_body_entered(body):
 		platforms.shuffle()
 		falling_platform = platforms[0]
 		falling_platform.fall()
+
+	if get_child_count() == 3:
+		$Fall.fall()

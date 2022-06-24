@@ -12,3 +12,6 @@ func _ready():
 	$Bones.text = String(bones_needed)
 	$Bricks.text = String(bricks_needed)
 	$"Item Descrption".text = String(description)
+
+	if Global.unlocked_skins.has(skin):
+		disabled = true

@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Cloud_Stair.obj-e25b5ee5dd1607772507d40ff091f83e.mesh"
+
+[deps]
+
+files=[ "res://.import/Cloud_Stair.obj-e25b5ee5dd1607772507d40ff091f83e.mesh" ]
+
+source_file="res://Tiles/Cloud_Stair.obj"
+dest_files=[ "res://.import/Cloud_Stair.obj-e25b5ee5dd1607772507d40ff091f83e.mesh", "res://.import/Cloud_Stair.obj-e25b5ee5dd1607772507d40ff091f83e.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

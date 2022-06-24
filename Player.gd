@@ -16,16 +16,19 @@ var gravity = 0.1 * speed_bonus
 var player_model
 var anim
 
-var bricks = 0
-var bones = 0
+#var bricks = 0
+#var bones = 0
 
 func _ready():
 	velocity.x = speed # * speed_bonus
 	player_model = $Player_Model
 	anim = $Player_Model/AnimationPlayer
 
-	bricks = 100
-	bones = 100
+	Engine.target_fps = 60
+
+
+	#Global.bricks = 100
+	#Global.bones = 100
 	update_item_count()
 
 func _input(event):
@@ -62,7 +65,9 @@ func _input(event):
 
 
 func jump():
-		gravity = gravity - jump_force
+	if $Feet.get_overlapping_bodies().size() != 0:
+		#gravity = gravity - jump_force
+		gravity = (0.1 * speed_bonus) - jump_force
 		#anim.playback_speed = 0.5
 		anim.play("Jump")
 		if not player_model.is_visible_in_tree():
@@ -144,23 +149,26 @@ func set_tornado_color(color):
 		mat.albedo_color = Color(0.5,0.25,0)
 
 
+func change_hair():
+	pass
+
 func add_item(item):
 	if item == "Bone":
-		bones += 1
+		Global.bones += 1
 		if $Quest.current_quest == "Skeletons":
 			$Quest.add_progress()
 	elif item == "Brick":
-		bricks += 1
+		Global.bricks += 1
 	update_item_count()
 
 func update_item_count():
-	$Hud/Items/Bone_Count.text = String(bones)
-	$Hud/Items/Brick_Count.text = String(bricks)
+	$Hud/Items/Bone_Count.text = String(Global.bones)
+	$Hud/Items/Brick_Count.text = String(Global.bricks)
 
 func forge_item(bricks_needed,bones_needed):
-	if bricks >= bricks_needed and bones >= bones_needed:
-		bricks -= bricks_needed
-		bones -= bones_needed
+	if Global.bricks >= bricks_needed and Global.bones >= bones_needed:
+		Global.bricks -= bricks_needed
+		Global.bones -= bones_needed
 		update_item_count()
 
 

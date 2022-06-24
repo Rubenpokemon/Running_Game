@@ -1,0 +1,128 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/Fire.gd" type="Script" id=1]
+[ext_resource path="res://Tiles/Cloud_Base.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Mesh/Lightning.obj" type="ArrayMesh" id=3]
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 2.19813, 1, 2.85286 )
+
+[sub_resource type="Shader" id=8]
+code = "shader_type spatial;
+
+void fragment () {
+	ALBEDO = vec3(0, 0, 0);
+	ALPHA = 0.8;
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 8 )
+
+[sub_resource type="ConvexPolygonShape" id=6]
+points = PoolVector3Array( -5.82282, 0.33733, -5.82282, -5.73163, -1.07649, -5.73163, -5.82282, 0.33733, 5.82282, -5.82282, 1.08507, -5.82282, 5.82282, 0.163618, -5.82282, -5.73163, -1.07649, 5.73049, 5.73049, -1.07649, -5.73163, -5.82282, 1.08507, 5.82282, 5.82282, 0.163618, 5.82282, 5.82282, 1.08507, -5.82282, 5.73049, -1.07649, 5.73049, 5.82282, 1.08507, 5.82282 )
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0, 0.0862745, 1, 1 )
+emission_enabled = true
+emission = Color( 0, 0.0392157, 1, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[node name="Storm" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.709049, 0 )
+script = ExtResource( 1 )
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 2.47946, 0, 0, 0, 1.19395, 0, 0, 0, 2.0236, 0, 1.68361, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 3 )
+
+[node name="Jump Delay" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Hide Delay" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Cloud_Base" type="MeshInstance" parent="."]
+mesh = ExtResource( 2 )
+material/0 = SubResource( 5 )
+
+[node name="StaticBody" type="StaticBody" parent="Cloud_Base"]
+
+[node name="CollisionShape2" type="CollisionShape" parent="Cloud_Base/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Lightning_Bolts" type="Spatial" parent="."]
+
+[node name="Lightning" type="MeshInstance" parent="Lightning_Bolts"]
+transform = Transform( -7.95357e-08, 0, 1.81956, -0.270488, 1.79935, -1.18234e-08, -1.79935, -0.270488, -7.8652e-08, 0, -0.0706611, 1.6365 )
+mesh = ExtResource( 3 )
+material/0 = SubResource( 7 )
+
+[node name="Lightning2" type="MeshInstance" parent="Lightning_Bolts"]
+transform = Transform( -4.25549e-08, 0, 0.973542, 0.307701, 0.923636, 1.345e-08, -0.923636, 0.307701, -4.03734e-08, -6.42608, -0.070662, 4.42698 )
+mesh = ExtResource( 3 )
+material/0 = SubResource( 7 )
+
+[node name="Lightning3" type="MeshInstance" parent="Lightning_Bolts"]
+transform = Transform( 0.368832, 0.162501, 1.36339, -0.730097, 1.21881, 0.0522409, -1.16284, -0.713697, 0.399643, -4.59754, -0.070662, -2.20448 )
+mesh = ExtResource( 3 )
+material/0 = SubResource( 7 )
+
+[node name="Lightning4" type="MeshInstance" parent="Lightning_Bolts"]
+transform = Transform( -8.97142e-08, -9.2293e-08, -2.51668, 1.05571, -2.28455, 4.61465e-08, -2.28455, -1.05571, 1.20155e-07, -1.55748, -0.070662, 0.816928 )
+mesh = ExtResource( 3 )
+material/0 = SubResource( 7 )
+
+[node name="Lightning5" type="MeshInstance" parent="Lightning_Bolts"]
+transform = Transform( -5.53176e-08, -5.69077e-08, -1.55178, 0.650949, -1.40865, 2.84539e-08, -1.40865, -0.650949, 7.40872e-08, 0.992622, -0.070663, -2.7478 )
+mesh = ExtResource( 3 )
+material/0 = SubResource( 7 )
+
+[node name="Lightning6" type="MeshInstance" parent="Lightning_Bolts"]
+transform = Transform( -5.53176e-08, -5.69077e-08, -1.55178, 0.650949, -1.40865, 2.84539e-08, -1.40865, -0.650949, 7.40872e-08, 4.75383, -0.070663, -0.60232 )
+mesh = ExtResource( 3 )
+material/0 = SubResource( 7 )
+
+[node name="Lightning7" type="MeshInstance" parent="Lightning_Bolts"]
+transform = Transform( -5.2268e-08, 0, 1.19575, -0.765444, 0.918649, -3.34586e-08, -0.918649, -0.765444, -4.01554e-08, 3.43294, -0.177835, -0.706085 )
+mesh = ExtResource( 3 )
+material/0 = SubResource( 7 )
+
+[node name="Lightning8" type="MeshInstance" parent="Lightning_Bolts"]
+transform = Transform( -2.79655e-08, 0, 0.639776, -0.409544, 0.491515, -1.79017e-08, -0.491515, -0.409544, -2.14848e-08, -5.0728, -0.652456, -3.95029 )
+mesh = ExtResource( 3 )
+material/0 = SubResource( 7 )
+
+[node name="Lightning9" type="MeshInstance" parent="Lightning_Bolts"]
+transform = Transform( -7.22931e-08, 0, 1.65387, -1.05871, 1.27061, -4.62775e-08, -1.27061, -1.05871, -5.554e-08, -1.86612, -0.0151698, -2.35892 )
+mesh = ExtResource( 3 )
+material/0 = SubResource( 7 )
+
+[node name="Lightning10" type="MeshInstance" parent="Lightning_Bolts"]
+transform = Transform( -5.89569e-08, -6.06516e-08, -1.65387, -0.281562, 1.62973, -4.97291e-08, 1.62973, 0.281562, -6.84218e-08, -2.27262, -0.0384352, 1.52217 )
+mesh = ExtResource( 3 )
+material/0 = SubResource( 7 )
+
+[node name="Lightning11" type="MeshInstance" parent="Lightning_Bolts"]
+transform = Transform( -3.63527e-08, -3.73977e-08, -1.01978, -0.173611, 1.00489, -3.06629e-08, 1.00489, 0.173611, -4.21888e-08, 1.07431, 0.567877, 3.50499 )
+mesh = ExtResource( 3 )
+material/0 = SubResource( 7 )
+
+[node name="Lightning12" type="MeshInstance" parent="Lightning_Bolts"]
+transform = Transform( -3.63527e-08, -3.73977e-08, -1.01978, -0.173611, 1.00489, -3.06629e-08, 1.00489, 0.173611, -4.21888e-08, 5.06669, 0.202959, 2.78445 )
+mesh = ExtResource( 3 )
+material/0 = SubResource( 7 )
+
+[node name="Animation_Timer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[connection signal="timeout" from="Jump Delay" to="." method="_on_Jump_Delay_timeout"]
+[connection signal="timeout" from="Hide Delay" to="." method="_on_Hide_Delay_timeout"]
+[connection signal="timeout" from="Animation_Timer" to="." method="_on_Animation_Timer_timeout"]

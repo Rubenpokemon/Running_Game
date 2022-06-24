@@ -7,7 +7,7 @@
 [ext_resource path="res://Levels/Snow_Platform.gd" type="Script" id=6]
 
 [sub_resource type="BoxShape" id=42]
-extents = Vector3( 2.41386, 0.551221, 0.795946 )
+extents = Vector3( 2.41386, 0.551221, 2.62917 )
 
 [node name="Level" type="Spatial"]
 script = ExtResource( 3 )
@@ -17,7 +17,7 @@ length = 25
 mesh_library = ExtResource( 1 )
 cell_size = Vector3( 11.5, 1.5, 11.5 )
 data = {
-"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 4, 0, 655360, 9, 0, 0, 10, 0, 0, 11, 0, 0, 19, 0, 655361, 20, 0, 1048576, 23, 0, 655361, 24, 0, 0, 0, 1, 0, 1, 1, 0, 7, 1, 655360, 19, 1, 1048579, 0, 2, 1441792, 1, 2, 1048578, 65534, 2, 1441792, 65535, 2, 1441792, 7, 65534, 655360, 0, 65535, 0, 1, 65535, 655362, 5, 65535, 655360, 19, 65535, 655363 )
+"cells": PoolIntArray( 0, 0, 655360, 3, 0, 0, 4, 0, 0, 5, 0, 0, 20, 0, 655360, 3, 1, 0, 3, 65535, 0, 4, 65535, 0, 16, 65535, 655360, 17, 65535, 655360, 23, 65535, 655360 )
 }
 __meta__ = {
 "_editor_clip_": 0,
@@ -29,13 +29,13 @@ script = ExtResource( 2 )
 enemies_to_spawn = 1
 
 [node name="Spawnpoint" type="Spatial" parent="Enemy Spawner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 84.971, 5.37505, 18.5108 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 52.7653, 5.37505, 3.06839 )
 
 [node name="Spawnpoint2" type="Spatial" parent="Enemy Spawner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 129.395, 5.37505, 6.51963 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 199.917, 5.37505, -5.69525 )
 
 [node name="Spawnpoint3" type="Spatial" parent="Enemy Spawner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 85.5161, 5.37505, -17.1701 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 232.809, 5.37504, 8.2093 )
 
 [node name="Falling Platforms" type="Spatial" parent="."]
 script = ExtResource( 5 )
@@ -53,7 +53,7 @@ one_shot = true
 mesh_library = ExtResource( 1 )
 cell_size = Vector3( 11.5, 1.5, 11.5 )
 data = {
-"cells": PoolIntArray( 14, 1, 1048577, 15, 1, 1048577, 16, 1, 1048577, 14, 2, 1048576, 15, 2, 1048576, 16, 2, 1048576 )
+"cells": PoolIntArray( 12, 0, 0, 13, 0, 0, 7, 65533, 0, 8, 65533, 0, 8, 65534, 0, 9, 65534, 0, 11, 65535, 0, 12, 65535, 0 )
 }
 __meta__ = {
 "_editor_clip_": 0,
@@ -73,7 +73,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 46 )
 mesh_library = ExtResource( 1 )
 cell_size = Vector3( 11.5, 1.5, 11.5 )
 data = {
-"cells": PoolIntArray( 14, 65534, 1048576, 15, 65534, 1048576, 16, 65534, 1048576, 14, 65535, 1441793, 15, 65535, 1441793, 16, 65535, 1441793 )
+"cells": PoolIntArray( 13, 0, 655360, 7, 1, 0, 10, 1, 0, 11, 1, 0, 6, 2, 0, 7, 2, 0, 9, 2, 0, 10, 2, 0, 6, 3, 0, 14, 65534, 655360, 13, 65535, 655360, 14, 65535, 655360 )
 }
 __meta__ = {
 "_editor_clip_": 0,
@@ -81,12 +81,34 @@ __meta__ = {
 }
 
 [node name="Area" type="Area" parent="Falling Platforms"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 121.026, 8.06983, 6.09297 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 52.3556, 8.06983, 6.09297 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Falling Platforms/Area"]
-transform = Transform( 6.89195, 0, 0, 0, 6.89195, 0, 0, 0, 6.89195, 0, -4.31507, 0 )
+transform = Transform( 6.89195, 0, 0, 0, 6.89195, 0, 0, 0, 6.89195, -26.0189, -4.31507, 0 )
 shape = SubResource( 42 )
+
+[node name="Fall" type="Spatial" parent="Falling Platforms"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -46 )
+script = ExtResource( 6 )
+
+[node name="Timer" type="Timer" parent="Falling Platforms/Fall"]
+wait_time = 3.0
+one_shot = true
+
+[node name="GridMap3" type="GridMap" parent="Falling Platforms/Fall"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 46 )
+visible = false
+mesh_library = ExtResource( 1 )
+cell_size = Vector3( 11.5, 1.5, 11.5 )
+data = {
+"cells": PoolIntArray( 9, 0, 0, 10, 0, 0, 8, 1, 0, 9, 1, 0, 8, 2, 0, 12, 65533, 0, 13, 65533, 0, 4, 65534, 0, 5, 65534, 0, 11, 65534, 0, 12, 65534, 0, 13, 65534, 0, 14, 65534, 0, 5, 65535, 0, 6, 65535, 0, 13, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
 
 [connection signal="timeout" from="Falling Platforms/Platforms/Platform/Timer" to="Falling Platforms/Platforms/Platform" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Falling Platforms/Platforms/Platform2/Timer" to="Falling Platforms/Platforms/Platform2" method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Falling Platforms/Area" to="Falling Platforms" method="_on_Area_body_entered"]
+[connection signal="timeout" from="Falling Platforms/Fall/Timer" to="Falling Platforms/Fall" method="_on_Timer_timeout"]

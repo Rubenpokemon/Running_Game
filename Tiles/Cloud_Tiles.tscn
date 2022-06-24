@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Tiles/Cloud_Stair.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Tiles/Cloud_Base.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Tiles/Cloud_Half.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://Tiles/Cloud_Corner.obj" type="ArrayMesh" id=4]
+
+[sub_resource type="ConvexPolygonShape" id=38]
+points = PoolVector3Array( -5.82282, 0.33733, -5.82282, -5.73163, -1.07649, -5.73163, -5.82282, 0.33733, 5.82282, -5.82282, 1.08507, -5.82282, 5.82282, 0.163618, -5.82282, -5.73163, -1.07649, 5.73049, 5.73049, -1.07649, -5.73163, -5.82282, 1.08507, 5.82282, 5.82282, 0.163618, 5.82282, 5.82282, 1.08507, -5.82282, 5.73049, -1.07649, 5.73049, 5.82282, 1.08507, 5.82282 )
+
+[sub_resource type="ConvexPolygonShape" id=29]
+points = PoolVector3Array( 3.30023, 0.8128, 5.68823, -2.56181, 0.8128, 5.68823, 3.23985, -1.3487, 5.45756, 3.30023, 0.8128, -5.69153, -2.38848, -1.3487, -5.46086, -2.38848, -1.3487, 5.45756, 3.23985, -1.3487, -5.46086, -2.56181, 0.8128, -5.69153, 3.08948, -0.221708, 5.729, 3.08948, -0.221708, -5.7323, 3.2845, -0.222423, -5.661, 3.2845, -0.222423, 5.6577 )
+
+[sub_resource type="ConvexPolygonShape" id=33]
+points = PoolVector3Array( 0, 0.104778, -3.80464, 5.68971, 1.08572, 0.0223099, -0.0142096, 1.08572, 0.0223099, 5.66044, -1.0765, -0.0982348, 5.68805, 1.0851, -5.67995, 0.106335, -1.0765, -5.65234, 0.106335, -1.0765, -0.0982348, 5.66044, -1.0765, -5.65234, -0.0125504, 1.0851, -5.67995, 5.7307, 0.1065, -5.7226, -4.44089e-16, 0.459566, 0.00810028, 5.7307, 0.196976, -0.117934, 5.28501, 0.106753, -5.7307, 5.66817, 0.458421, 0.000769026, 0, 0.282068, -5.6674, -4.44089e-16, 0.104778, -2.38632, 4.44089e-16, 0.370817, -0.258008 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Cloud_Base" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -14.5891 )
+mesh = ExtResource( 2 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Cloud_Base"]
+
+[node name="CollisionShape2" type="CollisionShape" parent="Cloud_Base/StaticBody"]
+shape = SubResource( 38 )
+
+[node name="Cloud_Base_Half" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7297, 0, -14.5275 )
+mesh = ExtResource( 3 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Cloud_Base_Half"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.08598, 0.269869, 0.0940251 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Cloud_Base_Half/StaticBody"]
+shape = SubResource( 29 )
+
+[node name="Snow_Base_Corner" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.40601, 0, -14.5275 )
+mesh = ExtResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Snow_Base_Corner"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Snow_Base_Corner/StaticBody"]
+shape = SubResource( 33 )
+
+[node name="Snow_Base_Stair" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0847, -0.00021112, -14.5275 )
+mesh = ExtResource( 1 )
+skeleton = NodePath("../Grass_Base_Corner")
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Snow_Base_Stair"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00144196, -0.0245268, 0 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Snow_Base_Stair/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.0083, 2.54299, 0.286148, 0 )
+shape = SubResource( 29 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Snow_Base_Stair/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.03785, -5.67365, 0, 0.108504 )
+shape = SubResource( 33 )
