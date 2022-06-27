@@ -1,9 +1,13 @@
 extends Node
 
-var worlds_unlocked = 3#1
+var first_launch = "Yes"
+var last_used_skin
+
+
+var worlds_unlocked = 0
 var level_type
 
-var unlocked_skins = ["Llyod","Jay","Kai","Zane","Cole"]
+var unlocked_skins = ["Llyod"]
 
 var map_length = 0
 
@@ -18,10 +22,10 @@ var player_color = Color.white
 var custom_shirt = "No"
 
 
-var base_brick_spawnrate = 1 #5
-var brick_spawn_chance = 1 #5
+var base_brick_spawnrate = 10
+var brick_spawn_chance = base_brick_spawnrate
 
-var bricks = 0
+var bricks= 0
 var bones = 0
 
 var speed_boost = 2

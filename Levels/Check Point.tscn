@@ -7,7 +7,7 @@
 [ext_resource path="res://Materials/Cloud_Shader.tres" type="Material" id=5]
 
 [sub_resource type="BoxShape" id=8]
-extents = Vector3( 5.53446, 6.30914, 5.96276 )
+extents = Vector3( 5.53446, 6.30914, 30.6117 )
 
 [sub_resource type="SpatialMaterial" id=2]
 resource_name = "Dirt"

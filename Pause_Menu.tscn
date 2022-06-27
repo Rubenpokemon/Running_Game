@@ -39,8 +39,34 @@ func _on_Resume_pressed():
 func _on_FullScreen_pressed():
 	OS.window_fullscreen = true
 
+
+var data = []
+const SAVE_DIR = \"user://saves/\"
+var save_path = SAVE_DIR + \"save.dat\"
+
 func _on_Quit_pressed():
+	data = [
+	Global.unlocked_skins,
+	Global.worlds_unlocked,
+	Global.bricks,
+	Global.bones,
+	Global.world_bricks_left,
+	Global.last_used_skin
+	]
+	
+	var dir = Directory.new()
+	if !dir.dir_exists(SAVE_DIR):
+		dir.make_dir(SAVE_DIR)
+
+	var file = File.new()
+	var error = file.open(save_path, File.WRITE)
+	if error == OK:
+		file.store_var(data)
+		file.close()
+	print (\"Save: \", data)
+
 	get_tree().quit()
+
 
 
 func _ready():
@@ -195,21 +221,22 @@ margin_bottom = 40.0
 
 [node name="Resume" type="Button" parent="Pause"]
 margin_left = 11.0
-margin_top = 142.0
+margin_top = 113.0
 margin_right = 524.0
-margin_bottom = 240.0
+margin_bottom = 211.0
 custom_fonts/font = SubResource( 2 )
 text = "Resume"
 
 [node name="Main Menu" type="Button" parent="Pause"]
 margin_left = 11.0
-margin_top = 244.0
+margin_top = 223.0
 margin_right = 524.0
-margin_bottom = 342.0
+margin_bottom = 321.0
 custom_fonts/font = SubResource( 2 )
 text = "Main Menu"
 
 [node name="Forge" type="Button" parent="Pause"]
+visible = false
 margin_left = 11.0
 margin_top = 347.0
 margin_right = 524.0
@@ -219,17 +246,17 @@ text = "Forge"
 
 [node name="Change Skin2" type="Button" parent="Pause"]
 margin_left = 11.0
-margin_top = 448.0
+margin_top = 333.0
 margin_right = 524.0
-margin_bottom = 546.0
+margin_bottom = 431.0
 custom_fonts/font = SubResource( 2 )
 text = "Change skin"
 
 [node name="Quit" type="Button" parent="Pause"]
 margin_left = 11.0
-margin_top = 550.0
+margin_top = 443.0
 margin_right = 524.0
-margin_bottom = 648.0
+margin_bottom = 541.0
 custom_fonts/font = SubResource( 2 )
 text = "Quit"
 

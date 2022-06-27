@@ -13,6 +13,7 @@ func _on_Play_pressed():
 		show()
 		presses += 1
 		World_Select_Update()
+		get_parent().change_screen("world_select")
 
 	elif presses == 1:
 		Select_world()
@@ -22,7 +23,7 @@ var world_number = 0
 
 var world_names = ["Tutorial","Grasslands","Snowy Mountians", "Electric Skies", "Shaking Grounds", "All of the above"]
 
-var world_requirments = ["None","Complete The Tutorial","Forge the Sword of Fire","Forge the Shurikens of Ice","Forge the Numchucks of Lightning","Forge the Scythe of Quakes"]
+var world_requirments = ["None","Forge the Sword of Fire","Forge the Shurikens of Ice","Forge the Numchucks of Lightning","Forge the Scythe of Quakes","Unlock Llyod"]
 
 
 
@@ -42,6 +43,14 @@ func World_Select_Up():
 func World_Select_Update():
 	$Sprite.frame = world_number
 	$Area_Name.text = str(world_names[world_number])
+	$"Golden Bricks Left".text = str(Global.world_bricks_left[world_number])
+	if world_number > Global.worlds_unlocked:
+		$"Golden Bricks Left".hide()
+		$Unlock_Message.show()
+		$Unlock_Message.text = str(world_requirments[world_number])
+	else:
+		$Unlock_Message.hide()
+		$"Golden Bricks Left".show()
 
 
 
@@ -51,3 +60,8 @@ func Select_world():
 		Global.level_type = world_number - 1 #Tutorial is number 0
 		Global.active_world = world_number
 		get_tree().change_scene("res://Game.tscn")
+
+
+func _on_Button_pressed():
+	presses = 0
+	get_parent().change_screen("Menu")

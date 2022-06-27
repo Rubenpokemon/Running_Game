@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=26 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Materials/Images/Arrow.png" type="Texture" id=1]
 [ext_resource path="res://Materials/ClassicWriteDemoRegular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Materials/Cole_Chest.jpg" type="Texture" id=3]
 [ext_resource path="res://Materials/LLyod_Chest_Front.jpg" type="Texture" id=4]
@@ -10,6 +10,13 @@
 [ext_resource path="res://Scenes/World Select.gd" type="Script" id=8]
 [ext_resource path="res://Materials/Skeleton Face.jpg" type="Texture" id=9]
 [ext_resource path="res://Scenes/Main_Menu.gd" type="Script" id=10]
+[ext_resource path="res://Materials/Images/Quit.PNG" type="Texture" id=11]
+[ext_resource path="res://Materials/Aloevera-OVoWO.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://Materials/Images/Golden_Brick.png" type="Texture" id=13]
+[ext_resource path="res://Materials/Images/Logo.png" type="Texture" id=14]
+[ext_resource path="res://Scenes/Forge.gd" type="Script" id=15]
+[ext_resource path="res://Scenes/Forge_Button.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Materials/Images/Bone.png" type="Texture" id=17]
 
 [sub_resource type="DynamicFont" id=1]
 size = 110
@@ -31,9 +38,34 @@ outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=4]
+size = 30
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 15
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 75
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=7]
+
+[sub_resource type="DynamicFont" id=8]
+size = 32
+font_data = ExtResource( 12 )
+
 [node name="Main Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -339, 785 )
 script = ExtResource( 10 )
 
 [node name="Start_Screen" type="Control" parent="."]
@@ -42,32 +74,49 @@ anchor_right = 0.5
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="Start_Screen"]
+[node name="Logo" type="TextureRect" parent="Start_Screen"]
 anchor_left = 0.491
 anchor_right = 0.491
-margin_left = -315.64
-margin_top = 50.0
-margin_right = 265.36
-margin_bottom = 191.0
-texture = ExtResource( 1 )
+margin_left = -477.64
+margin_top = 7.0
+margin_right = 412.36
+margin_bottom = 223.0
+texture = ExtResource( 14 )
 expand = true
 
 [node name="Play" type="Button" parent="Start_Screen"]
 margin_left = -205.0
-margin_top = 233.0
+margin_top = 253.0
 margin_right = 176.0
-margin_bottom = 340.0
+margin_bottom = 360.0
 custom_fonts/font = SubResource( 1 )
 text = "Play"
 flat = true
 
+[node name="Forge" type="Button" parent="Start_Screen"]
+margin_left = -205.0
+margin_top = 384.0
+margin_right = 176.0
+margin_bottom = 491.0
+custom_fonts/font = SubResource( 1 )
+text = "Forge"
+flat = true
+
 [node name="Quit" type="TextureButton" parent="Start_Screen"]
 anchor_right = 1.0
-margin_left = 484.0
+margin_left = 507.0
 margin_top = 48.0
-margin_right = 569.0
-margin_bottom = 121.0
-texture_normal = ExtResource( 1 )
+margin_right = 543.0
+margin_bottom = 123.0
+texture_normal = ExtResource( 11 )
+
+[node name="Reset" type="TextureButton" parent="Start_Screen"]
+anchor_right = 1.0
+margin_left = -580.0
+margin_top = 610.0
+margin_right = -544.0
+margin_bottom = 685.0
+texture_normal = ExtResource( 6 )
 expand = true
 
 [node name="World Select" type="Control" parent="."]
@@ -87,6 +136,7 @@ margin_top = 166.0
 margin_right = 88.0
 margin_bottom = 236.0
 texture_normal = ExtResource( 1 )
+expand = true
 
 [node name="Right" type="TextureButton" parent="World Select"]
 margin_left = 297.0
@@ -94,6 +144,8 @@ margin_top = 166.0
 margin_right = 373.0
 margin_bottom = 236.0
 texture_normal = ExtResource( 1 )
+expand = true
+flip_h = true
 
 [node name="Sprite" type="AnimatedSprite" parent="World Select"]
 position = Vector2( 191, 200 )
@@ -110,7 +162,163 @@ text = "Area Name Area Name"
 align = 1
 valign = 1
 
+[node name="Golden Bricks Left" type="Label" parent="World Select"]
+margin_left = 136.0
+margin_top = 295.0
+margin_right = 182.0
+margin_bottom = 326.0
+custom_fonts/font = SubResource( 4 )
+text = "100"
+
+[node name="TextureRect" type="TextureRect" parent="World Select/Golden Bricks Left"]
+margin_left = -37.0
+margin_top = -11.0
+margin_right = 3.0
+margin_bottom = 29.0
+texture = ExtResource( 13 )
+expand = true
+
+[node name="Unlock_Message" type="Label" parent="World Select"]
+visible = false
+margin_left = 12.0
+margin_top = 295.0
+margin_right = 367.0
+margin_bottom = 326.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "WORDS WORDS WORDS"
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="World Select"]
+margin_left = 67.0
+margin_top = 341.0
+margin_right = 324.0
+margin_bottom = 374.0
+custom_fonts/font = SubResource( 3 )
+text = "Close Map Selection "
+flat = true
+
+[node name="Forge" type="Control" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 15 )
+
+[node name="Menu" type="Button" parent="Forge"]
+anchor_bottom = 1.0
+margin_left = -237.0
+margin_top = 559.0
+margin_right = 215.0
+margin_bottom = 666.0
+custom_fonts/font = SubResource( 6 )
+text = "Back To Menu"
+flat = true
+
+[node name="Bone_Count" type="Label" parent="Forge"]
+margin_left = -571.0
+margin_top = 149.0
+margin_right = -514.0
+margin_bottom = 182.0
+theme = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
+text = "000"
+
+[node name="Bones" type="TextureRect" parent="Forge/Bone_Count"]
+margin_left = -68.0
+margin_top = -31.0
+margin_right = -4.0
+margin_bottom = 33.0
+texture = ExtResource( 17 )
+expand = true
+
+[node name="Brick_Count" type="Label" parent="Forge"]
+margin_left = -577.0
+margin_top = 81.0
+margin_right = -520.0
+margin_bottom = 114.0
+theme = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
+text = "000"
+
+[node name="Bricks" type="TextureRect" parent="Forge/Brick_Count"]
+margin_left = -60.0
+margin_top = -31.0
+margin_right = 4.0
+margin_bottom = 33.0
+texture = ExtResource( 13 )
+expand = true
+
+[node name="Buttons" type="Control" parent="Forge"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Kai" parent="Forge/Buttons" instance=ExtResource( 16 )]
+margin_left = -507.0
+margin_top = 22.0
+margin_right = -121.0
+margin_bottom = 360.0
+rect_scale = Vector2( 0.73158, 0.73158 )
+skin = "Kai"
+bones_needed = 2
+bricks_needed = 1
+image = "res://Materials/Images/Sword.png"
+description = "Unlock Kai"
+
+[node name="Zane" parent="Forge/Buttons" instance=ExtResource( 16 )]
+margin_left = -141.0
+margin_top = 22.0
+margin_right = 245.0
+margin_bottom = 360.0
+rect_scale = Vector2( 0.718058, 0.718058 )
+skin = "Zane"
+bones_needed = 8
+bricks_needed = 4
+image = "res://Materials/Images/Shurikins.png"
+description = "Unlock Zane"
+
+[node name="Jay" parent="Forge/Buttons" instance=ExtResource( 16 )]
+margin_left = 234.0
+margin_top = 22.0
+margin_right = 620.0
+margin_bottom = 360.0
+rect_scale = Vector2( 0.713619, 0.713619 )
+skin = "Jay"
+bones_needed = 24
+bricks_needed = 8
+image = "res://Materials/Images/Nunchucks.png"
+description = "Unlock Jay"
+
+[node name="Cole" parent="Forge/Buttons" instance=ExtResource( 16 )]
+margin_left = -317.0
+margin_top = 282.0
+margin_right = 69.0
+margin_bottom = 620.0
+rect_scale = Vector2( 0.713619, 0.713619 )
+skin = "Cole"
+bones_needed = 45
+bricks_needed = 15
+image = "res://Materials/Images/Sytche.png"
+description = "Unlock Cole"
+
+[node name="Jay3" parent="Forge/Buttons" instance=ExtResource( 16 )]
+margin_left = 31.0
+margin_top = 282.0
+margin_right = 417.0
+margin_bottom = 620.0
+rect_scale = Vector2( 0.713619, 0.713619 )
+skin = "Llyod"
+bones_needed = 125
+bricks_needed = 45
+description = "Unlock Llyod"
+
 [connection signal="pressed" from="Start_Screen/Play" to="World Select" method="_on_Play_pressed"]
+[connection signal="pressed" from="Start_Screen/Forge" to="Forge" method="_on_Forge_pressed"]
 [connection signal="pressed" from="Start_Screen/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="Start_Screen/Reset" to="." method="_on_Reset_pressed"]
 [connection signal="pressed" from="World Select/Left" to="World Select" method="World_Select_Down"]
 [connection signal="pressed" from="World Select/Right" to="World Select" method="World_Select_Up"]
+[connection signal="pressed" from="World Select/Button" to="World Select" method="_on_Button_pressed"]
+[connection signal="pressed" from="Forge/Menu" to="Forge" method="_on_Menu_pressed"]

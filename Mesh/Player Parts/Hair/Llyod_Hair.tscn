@@ -172,5 +172,6 @@ material/0 = ExtResource( 7 )
 
 [node name="Cole" type="MeshInstance" parent="." index="7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00176501, 0.2865, 0.135113 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 8 )

@@ -26,10 +26,18 @@ func _ready():
 
 	Engine.target_fps = 60
 
-
 	#Global.bricks = 100
 	#Global.bones = 100
 	update_item_count()
+
+
+
+
+
+
+
+
+
 
 func _input(event):
 	if event.is_action_pressed("Left"):

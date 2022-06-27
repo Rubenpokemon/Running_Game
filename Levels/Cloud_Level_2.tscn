@@ -34,16 +34,13 @@ script = ExtResource( 2 )
 enemies_to_spawn = 1
 
 [node name="Spawnpoint" type="Spatial" parent="Enemy Spawner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37.9927, 5.37505, 24.544 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33.8086, 5.37505, 22.7508 )
 
 [node name="Spawnpoint2" type="Spatial" parent="Enemy Spawner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 92.4783, 5.37505, -4.36154 )
-
-[node name="Spawnpoint3" type="Spatial" parent="Enemy Spawner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 249.742, 9.45256, 10.2913 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 97.9701, 5.37505, -6.3386 )
 
 [node name="Spawnpoint4" type="Spatial" parent="Enemy Spawner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 249.742, -101.122, -25.9203 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 269.513, -101.122, 5.27332 )
 
 [node name="Spawnpoint5" type="Spatial" parent="Enemy Spawner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 96.845, 5.37505, 17.6859 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 97.504, 5.37505, 16.5875 )

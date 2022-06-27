@@ -18,7 +18,6 @@ func bolt_animation():
 	for i in x:
 		var bolt = bolts[i]
 		bolt.show()
-		$Animation_Timer.wait_time = 0.1 + (Global.speed_boost/5)
 		$Animation_Timer.start()
 
 

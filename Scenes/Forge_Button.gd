@@ -8,10 +8,16 @@ export var image = "res://icon.png"
 export var description = ""
 
 func _ready():
-	texture_normal = load(image)
+	$TextureRect3.texture = load(image)
 	$Bones.text = String(bones_needed)
 	$Bricks.text = String(bricks_needed)
 	$"Item Descrption".text = String(description)
 
 	if Global.unlocked_skins.has(skin):
-		disabled = true
+		disable_button()
+
+func disable_button():
+	disabled = true
+	for i in get_children():
+		i.hide()
+		$TextureRect3.show()
