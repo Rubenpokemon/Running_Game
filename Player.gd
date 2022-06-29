@@ -16,6 +16,9 @@ var gravity = 0.1 * speed_bonus
 var player_model
 var anim
 
+var can_move = "Yes"
+
+
 #var bricks = 0
 #var bones = 0
 
@@ -40,35 +43,36 @@ func _ready():
 
 
 func _input(event):
-	if event.is_action_pressed("Left"):
-		velocity.z = (-speed * 0.75) 
-	if event.is_action_released("Left"):
-		velocity.z = 0
-		check_L_R()
+	if can_move == "Yes":
+		if event.is_action_pressed("Left"):
+			velocity.z = (-speed * 0.75) 
+		if event.is_action_released("Left"):
+			velocity.z = 0
+			check_L_R()
 
-	if event.is_action_pressed("Right"):
-		velocity.z = (speed * 0.75) 
-	if event.is_action_released("Right"):
-		velocity.z = 0
-		check_L_R()
+		if event.is_action_pressed("Right"):
+			velocity.z = (speed * 0.75) 
+		if event.is_action_released("Right"):
+			velocity.z = 0
+			check_L_R()
 
-	if event.is_action_pressed("Respawn"):
-		respawn()
-
-
-	if event.is_action_pressed("Jump") and $Feet.get_overlapping_bodies().size() != 0:
-		jump()
+		if event.is_action_pressed("Respawn"):
+			respawn()
 
 
-	if event.is_action_pressed("Down"):
-		if attacking == "No":
-			player_model.hide()
-			$Tornado.show()
-			attacking = "Yes"
-		else:
-			$Tornado.hide()
-			player_model.show()
-			attacking = "No"
+		if event.is_action_pressed("Jump") and $Feet.get_overlapping_bodies().size() != 0:
+			jump()
+
+
+		if event.is_action_pressed("Down"):
+			if attacking == "No":
+				player_model.hide()
+				$Tornado.show()
+				attacking = "Yes"
+			else:
+				$Tornado.hide()
+				player_model.show()
+				attacking = "No"
 
 
 
@@ -96,6 +100,9 @@ func check_L_R():
 func _process(delta):
 	movement(delta)
 	change_rotation()
+	if can_move == "No": #Using AirJitzu
+		adjust_airjitzu()
+
 
 func movement(delta):
 	move_and_collide(velocity)
@@ -120,6 +127,10 @@ func movement(delta):
 
 
 func complete_task(completed_task):
+	
+	if can_move == "No" and completed_task == "Levels": #Using Airjitzu
+		finish_airjitzu()
+
 	if $Quest.current_quest == "Levels" and completed_task == "Levels":
 		$Quest.add_progress()
 	elif $Quest.current_quest == "Bricks" and completed_task == "Bricks":
@@ -179,4 +190,27 @@ func forge_item(bricks_needed,bones_needed):
 		Global.bones -= bones_needed
 		update_item_count()
 
+func start_airjitzu():
+	gravity = 0
+	gravity_limit = 0
+	can_move = "No"
+	translation.y = 15
+	velocity.z = 0 
+	$Airjitzu.show()
 
+func adjust_airjitzu():
+	if translation.z < 9 and translation.z > 6:
+		velocity.z = 0
+	elif translation.z > 9:
+		velocity.z = -speed * 0.5
+	elif translation.z < 6:
+		velocity.z = speed * 0.5
+	gravity = 0
+
+
+func finish_airjitzu():
+	gravity = 0.1 * speed_bonus
+	gravity_limit = 0.2
+	can_move = "Yes"
+	$Airjitzu.hide()
+	velocity.z = 0

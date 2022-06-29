@@ -10,7 +10,9 @@ func _on_Forge_pressed():
 	show()
 	get_parent().change_screen("Forge")
 	update_item_counter()
-
+	for button in $Buttons.get_children():
+		if Global.unlocked_skins.has(button.name):
+			button.disable_button()
 
 func _on_Menu_pressed():
 	get_parent().change_screen("Menu")

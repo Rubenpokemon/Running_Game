@@ -54,8 +54,8 @@ func _on_Quit_pressed():
 func _on_Reset_pressed():
 	Global.unlocked_skins = []
 	Global.worlds_unlocked = 0
-	Global.bricks = 0
-	Global.bones = 0
+	Global.bricks = 100
+	Global.bones = 100
 	Global.world_bricks_left = [1,5,10,25,40,100]
 	Global.last_used_skin = null
 

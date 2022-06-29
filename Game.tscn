@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Levels/Check Point.tscn" type="PackedScene" id=2]
@@ -10,6 +10,19 @@
 [ext_resource path="res://Scenes/Quest.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Hud.tscn" type="PackedScene" id=9]
 
+[sub_resource type="SphereMesh" id=8]
+
+[sub_resource type="Shader" id=43]
+code = "shader_type spatial;
+
+void fragment () {
+	ALBEDO = vec3(1, 1, 1);
+	ALPHA = 0.5;
+}"
+
+[sub_resource type="ShaderMaterial" id=44]
+shader = SubResource( 43 )
+
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 1.353, 3.21045, 1.22999 )
 
@@ -20,7 +33,7 @@ extents = Vector3( 1, 0.332435, 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
 
 [node name="Player" type="KinematicBody" parent="."]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -31.0219, 14.4951, 6.33163 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -31.022, 14.495, 6 )
 script = ExtResource( 1 )
 
 [node name="Player_Model" parent="Player" instance=ExtResource( 3 )]
@@ -40,6 +53,12 @@ visible = false
 mesh = ExtResource( 4 )
 skeleton = NodePath("../..")
 material/0 = ExtResource( 6 )
+
+[node name="Airjitzu" type="MeshInstance" parent="Player"]
+transform = Transform( 3.69284, 0, -1.42109e-14, 0, 3.69284, 0, 1.42109e-14, 0, 3.69284, 0, -0.385603, -0.209101 )
+visible = false
+mesh = SubResource( 8 )
+material/0 = SubResource( 44 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Player"]
 shape = SubResource( 2 )

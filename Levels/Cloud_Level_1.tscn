@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Tiles/Cloud_Tiles.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://Levels/Enemy Spawn Points.gd" type="Script" id=2]
 [ext_resource path="res://Levels/Level.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Storm_Cloud.tscn" type="PackedScene" id=4]
+
+[sub_resource type="BoxShape" id=1]
 
 [node name="Level" type="Spatial"]
 script = ExtResource( 3 )
@@ -50,3 +52,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 249.742, 5.37505, 7.0626 )
 
 [node name="Spawnpoint5" type="Spatial" parent="Enemy Spawner"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 169.147, 5.37505, -27.1335 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.421, 6 )
+shape = SubResource( 1 )
